@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Schedule Search App for the CT Center</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            cursor: pointer;
+        }
+
+        input[type=text], button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            width: 25%;
+            height: 50%;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        #legend {
+            border: 1px solid #000000;
+            border-radius: 1px;
+            width: 175px;
+            position: fixed;
+            top: 50%;
+            right: 10%;
+            height: 200px;
+            padding: 10px;
+            justify-content: center;
+        }
+
+        #choiceOne {
+            border: 1px solid #000000;
+            background-color:cornflowerblue;
+            border-radius: 20px;
+            width: 75%;
+            height: 10%;
+            box-sizing: border-box;
+        }
+
+        #header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        #instructions {
+            margin-bottom: 20;
+            text-align: center;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <div id="header">
+        <h1 id="title" style="font-family:verdana">Schedule Search App for the CT Center</h1>
+        <p id="version">Version 1.0</p>
+    </div>
+
+    <div id="instructions-container">
+        <p id="instructions">Choose the action you want to take from the legend! Or, upload attendance!</p>
+    </div>
+
+    <button id="popupButton">Upload attendance</button>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <p>Copy and paste the attendance page from RedRock today.</p>
+            <input type="text" id="attendance" placeholder="Copy and paste here">
+            <button id="submitBtn">Submit</button>
+        </div>
+    </div>
+    
+    <div id="legend">
+        <button id="choiceOne">Choice 1</button>
+    </div>
+
+
+
+
+    <script>
+        const popup = document.getElementById('popup');
+        const popupButton = document.getElementById('popupButton');
+        const closePopup = document.getElementById('closePopup');
+        const submitBtn = document.getElementById('submitBtn');
+        const attendanceInput = document.getElementById('attendance');
+
+        popupButton.addEventListener('click', function() {
+            popup.style.display = 'block';
+        });
+
+        closePopup.addEventListener('click', function() {
+            popup.style.display = 'none';
+        });
+
+        submitBtn.addEventListener('click', function() {
+            const attendance = attendanceInput.value;
+            alert("Thanks for submitting!" + attendance);
+            popup.style.display = 'none';
+        })
+
+    </script>
+</body>
+
